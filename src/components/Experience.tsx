@@ -10,7 +10,10 @@ import {
   ChevronDown, 
   ChevronUp,
   Sparkles,
-  ArrowUpRight
+  ArrowUpRight,
+  Building2,
+  CheckCircle2,
+  Layers
 } from 'lucide-react';
 import { ExperienceItem } from '../types/portfolio';
 
@@ -34,13 +37,13 @@ export const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
       <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-neutral-200 dark:border-neutral-800 pb-6">
         <div className="space-y-2 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-semibold uppercase tracking-wider border border-blue-200/60 dark:border-blue-800/60">
-            <span>Career History</span>
+            <span>Career History & Impact</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-50">
-            Product Management Experience
+            Professional Experience
           </h2>
           <p className="text-sm sm:text-base text-neutral-600 dark:text-neutral-400">
-            Track record of driving discovery, structuring ambiguous requirements, leading sprint execution, and delivering measurable outcomes.
+            Track record across Enterprise B2B SaaS, manufacturing cost automation, and B2C AI mobile products—delivering measurable improvements in procurement TAT, user activation, and release velocity.
           </p>
         </div>
 
@@ -53,7 +56,7 @@ export const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
 
       {/* Experience Timeline Cards */}
       <div className="space-y-6">
-        {experiences.map((exp, idx) => {
+        {experiences.map((exp) => {
           const isExpanded = expandedId === exp.id;
           return (
             <div
@@ -70,17 +73,17 @@ export const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
                 onClick={() => toggleExpand(exp.id)}
                 className="p-5 sm:p-6 cursor-pointer flex flex-col lg:flex-row lg:items-center justify-between gap-4 select-none"
               >
-                <div className="space-y-2">
+                <div className="space-y-2.5">
                   <div className="flex flex-wrap items-center gap-2">
                     <span className="text-xs font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-md bg-blue-100 dark:bg-blue-950/80 text-blue-800 dark:text-blue-300 border border-blue-200/60 dark:border-blue-800/60">
                       {exp.productDomain}
                     </span>
-                    <span className="text-xs text-neutral-500 dark:text-neutral-400 flex items-center gap-1">
-                      <Calendar className="w-3.5 h-3.5" />
+                    <span className="text-xs text-neutral-500 dark:text-neutral-400 flex items-center gap-1 font-medium">
+                      <Calendar className="w-3.5 h-3.5 text-neutral-400" />
                       {exp.period}
                     </span>
-                    <span className="text-xs text-neutral-500 dark:text-neutral-400 flex items-center gap-1">
-                      <MapPin className="w-3.5 h-3.5" />
+                    <span className="text-xs text-neutral-500 dark:text-neutral-400 flex items-center gap-1 font-medium">
+                      <MapPin className="w-3.5 h-3.5 text-neutral-400" />
                       {exp.location}
                     </span>
                   </div>
@@ -108,13 +111,31 @@ export const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
                     )}
                   </div>
 
-                  <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 max-w-3xl">
+                  {exp.productName && (
+                    <div className="flex items-center gap-1.5 text-xs font-semibold text-blue-700 dark:text-blue-300 bg-blue-50 dark:bg-blue-950/40 px-2.5 py-1 rounded-md w-fit border border-blue-200/50 dark:border-blue-900/50">
+                      <Layers className="w-3.5 h-3.5 text-blue-500" />
+                      <span>Product: {exp.productName}</span>
+                    </div>
+                  )}
+
+                  {exp.clients && exp.clients.length > 0 && (
+                    <div className="flex items-center gap-1.5 flex-wrap text-xs text-neutral-600 dark:text-neutral-400">
+                      <span className="font-semibold text-neutral-700 dark:text-neutral-300">Clients & Engagements:</span>
+                      {exp.clients.map((c, cIdx) => (
+                        <span key={cIdx} className="px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 font-medium text-[11px] border border-neutral-200/60 dark:border-neutral-700/60">
+                          {c}
+                        </span>
+                      ))}
+                    </div>
+                  )}
+
+                  <p className="text-xs sm:text-sm text-neutral-600 dark:text-neutral-400 max-w-3xl leading-relaxed">
                     {exp.summary}
                   </p>
                 </div>
 
                 {/* Right Metrics Pills & Expand Button */}
-                <div className="flex items-center justify-between lg:justify-end gap-3 pt-2 lg:pt-0 border-t lg:border-t-0 border-neutral-100 dark:border-neutral-800">
+                <div className="flex items-center justify-between lg:justify-end gap-3 pt-2 lg:pt-0 border-t lg:border-t-0 border-neutral-100 dark:border-neutral-800 shrink-0">
                   <div className="flex flex-wrap gap-2">
                     {exp.highlightMetrics.slice(0, 2).map((metric, mIdx) => (
                       <span 
@@ -135,7 +156,7 @@ export const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
                 </div>
               </div>
 
-              {/* Detailed Expanded Breakdown (Problem -> Action -> Outcome) */}
+              {/* Detailed Expanded Breakdown (Problem -> Action -> Outcome + Key Deliverables) */}
               {isExpanded && (
                 <div className="px-5 sm:px-6 pb-6 pt-2 border-t border-neutral-100 dark:border-neutral-800 space-y-6">
                   
@@ -176,6 +197,32 @@ export const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
                     </div>
 
                   </div>
+
+                  {/* Key Deliverables & Initiatives Breakdown */}
+                  {exp.keyDeliverables && exp.keyDeliverables.length > 0 && (
+                    <div className="p-4 sm:p-5 rounded-xl bg-neutral-50 dark:bg-neutral-950/60 border border-neutral-200/80 dark:border-neutral-800 space-y-3">
+                      <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-neutral-700 dark:text-neutral-300">
+                        <Sparkles className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                        <span>Key Initiatives & Deliverables</span>
+                      </div>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
+                        {exp.keyDeliverables.map((item, dIdx) => (
+                          <div 
+                            key={dIdx} 
+                            className="p-3.5 rounded-lg bg-white dark:bg-neutral-900 border border-neutral-200/60 dark:border-neutral-800 space-y-1.5"
+                          >
+                            <h4 className="text-xs font-bold text-neutral-900 dark:text-neutral-100 flex items-center gap-1.5">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 shrink-0" />
+                              <span>{item.title}</span>
+                            </h4>
+                            <p className="text-xs text-neutral-600 dark:text-neutral-300 leading-relaxed">
+                              {item.description}
+                            </p>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
 
                   {/* Stakeholders & Skills Meta Footer */}
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-neutral-100 dark:border-neutral-800 text-xs">

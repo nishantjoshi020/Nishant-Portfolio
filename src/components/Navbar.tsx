@@ -5,19 +5,20 @@ import {
   Moon, 
   Sun, 
   FileText, 
+  Download,
+  Check,
   Sparkles, 
   ExternalLink,
-  ChevronRight,
-  SlidersHorizontal
+  ChevronRight
 } from 'lucide-react';
 import { PortfolioProfile } from '../types/portfolio';
+import { generateResumePDF } from '../utils/generateResumePDF';
 
 interface NavbarProps {
   profile: PortfolioProfile;
   darkMode: boolean;
   setDarkMode: (val: boolean) => void;
   onOpenResume: () => void;
-  onOpenCustomizer: () => void;
   activeSection: string;
 }
 
@@ -26,11 +27,17 @@ export const Navbar: React.FC<NavbarProps> = ({
   darkMode,
   setDarkMode,
   onOpenResume,
-  onOpenCustomizer,
   activeSection
 }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [downloaded, setDownloaded] = useState(false);
+
+  const handleDownloadResume = () => {
+    generateResumePDF();
+    setDownloaded(true);
+    setTimeout(() => setDownloaded(false), 3000);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -102,65 +109,53 @@ export const Navbar: React.FC<NavbarProps> = ({
           </nav>
 
           {/* Action CTAs & Controls */}
-          <div className="hidden md:flex items-center gap-2.5">
-            {/* Quick Customizer Helper */}
-            <button
-              onClick={onOpenCustomizer}
-              id="customizer-btn"
-              title="Edit Profile & Placeholder Data"
-              className="p-2 rounded-lg text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors flex items-center gap-1.5 text-xs font-medium"
-            >
-              <SlidersHorizontal className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-              <span className="hidden xl:inline">Customize</span>
-            </button>
-
-            {/* Theme Toggle */}
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            {/* Single Unified Theme Toggle */}
             <button
               onClick={() => setDarkMode(!darkMode)}
               id="theme-toggle-btn"
               aria-label="Toggle Dark Mode"
               className="p-2 rounded-lg text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-neutral-100 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
             >
-              {darkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-neutral-700" />}
+              {darkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4 text-neutral-700 dark:text-neutral-300" />}
             </button>
 
-            {/* Resume Button */}
+            {/* Resume Button with direct download */}
             <button
-              onClick={onOpenResume}
+              onClick={handleDownloadResume}
               id="navbar-resume-btn"
-              className="px-3.5 py-2 text-xs font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-100 dark:bg-neutral-800/80 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-lg transition-colors flex items-center gap-1.5 border border-neutral-200/80 dark:border-neutral-700/60"
+              className="hidden sm:flex px-3.5 py-2 text-xs font-medium text-neutral-800 dark:text-neutral-200 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-lg transition-colors items-center gap-1.5 border border-neutral-200/80 dark:border-neutral-700/60 cursor-pointer"
+              title="Download Nishant Joshi's Resume (PDF)"
             >
-              <FileText className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
-              <span>Resume</span>
+              {downloaded ? (
+                <>
+                  <Check className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
+                  <span className="text-emerald-700 dark:text-emerald-400 font-semibold">Downloaded!</span>
+                </>
+              ) : (
+                <>
+                  <Download className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
+                  <span>Resume</span>
+                </>
+              )}
             </button>
 
             {/* Let's Connect CTA */}
             <a
               href="#contact"
               id="navbar-connect-btn"
-              className="px-4 py-2 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500 rounded-lg shadow-sm hover:shadow transition-all flex items-center gap-1"
+              className="hidden sm:flex px-4 py-2 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500 rounded-lg shadow-sm hover:shadow transition-all items-center gap-1"
             >
               <span>Let's Connect</span>
               <ChevronRight className="w-3.5 h-3.5" />
             </a>
-          </div>
 
-          {/* Mobile Menu & Theme Toggle Buttons */}
-          <div className="flex items-center gap-2 lg:hidden">
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              id="mobile-theme-btn"
-              aria-label="Toggle Theme"
-              className="p-2 rounded-lg text-neutral-600 dark:text-neutral-400 hover:bg-neutral-100 dark:hover:bg-neutral-800"
-            >
-              {darkMode ? <Sun className="w-4 h-4 text-amber-400" /> : <Moon className="w-4 h-4" />}
-            </button>
-
+            {/* Mobile Menu Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               id="mobile-menu-toggle-btn"
               aria-label="Toggle Menu"
-              className="p-2 rounded-lg text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
+              className="lg:hidden p-2 rounded-lg text-neutral-800 dark:text-neutral-200 hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
             >
               {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
             </button>
@@ -194,26 +189,26 @@ export const Navbar: React.FC<NavbarProps> = ({
           </div>
 
           <div className="pt-3 border-t border-neutral-200 dark:border-neutral-800 flex flex-col gap-2">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenResume();
-              }}
-              className="w-full py-2.5 px-4 text-xs font-medium text-neutral-800 dark:text-neutral-200 bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 dark:hover:bg-neutral-700 rounded-lg flex items-center justify-center gap-2"
-            >
-              <FileText className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-              <span>View & Download Resume</span>
-            </button>
+            <div className="flex items-center justify-between px-1 py-1">
+              <span className="text-xs text-neutral-600 dark:text-neutral-400 font-medium">Theme Mode</span>
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                className="px-3 py-1.5 rounded-lg text-xs font-medium bg-neutral-100 dark:bg-neutral-800 text-neutral-800 dark:text-neutral-200 hover:bg-neutral-200 dark:hover:bg-neutral-700 flex items-center gap-1.5 transition-colors"
+              >
+                {darkMode ? <Sun className="w-3.5 h-3.5 text-amber-400" /> : <Moon className="w-3.5 h-3.5 text-neutral-600 dark:text-neutral-400" />}
+                <span>{darkMode ? 'Light Mode' : 'Dark Mode'}</span>
+              </button>
+            </div>
 
             <button
               onClick={() => {
                 setMobileMenuOpen(false);
-                onOpenCustomizer();
+                handleDownloadResume();
               }}
-              className="w-full py-2.5 px-4 text-xs font-medium text-neutral-700 dark:text-neutral-300 bg-neutral-50 dark:bg-neutral-800/50 border border-neutral-200 dark:border-neutral-700 rounded-lg flex items-center justify-center gap-2"
+              className="w-full py-2.5 px-4 text-xs font-semibold text-white bg-blue-600 hover:bg-blue-700 rounded-lg flex items-center justify-center gap-2 shadow-sm"
             >
-              <SlidersHorizontal className="w-4 h-4 text-blue-500" />
-              <span>Customize Profile & Placeholders</span>
+              <Download className="w-4 h-4" />
+              <span>Download Resume (PDF)</span>
             </button>
 
             <a

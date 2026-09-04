@@ -119,11 +119,11 @@ export const certificationsData: CertificationItem[] = [
 
 export const profileData: PortfolioProfile = {
   name: "Nishant Joshi",
-  title: "Associate Product Manager",
+  title: "Associate Product Manager | Technical Product Management",
   tagline: "I build products by turning user problems, data, and business goals into simple, impactful solutions.",
-  location: "Open to Remote & Global Relocation",
+  location: "Indore, M.P. • Open to Remote & Relocation",
   bioSummary:
-    "I am an analytical, product-minded Associate Product Manager with hands-on experience building B2B SaaS, consumer growth flywheels, quick-commerce verticals, and AI prototypes—including ProcUrPal (AI Procurement Cloud), CostItRight (Manufacturing Should-Cost Intelligence), FitSpark (Gamified Fitness & Retention Ecosystem), KitchenGenius (AI Smart Kitchen & Meal Planner Prototype), Twitter/X Creator Growth Loops, and Zepto Essentials & On-Demand Printing. I specialize in navigating the entire product lifecycle: from unearthing qualitative customer pain points and analyzing telemetry to drafting crisp PRDs, ruthlessly prioritizing backlogs with RICE, and partnering with engineering and design to ship high-impact products.",
+    "Technical & Data-Driven Associate Product Manager with 3+ years of product experience across enterprise B2B SaaS, manufacturing cost automation, and B2C AI-powered mobile products. Experienced in owning product initiatives from discovery and requirements through design, development, testing, and launch, with a strong track record of translating complex business needs into scalable workflows. Delivered measurable improvements across procurement TAT, user activation, release velocity, and operational automation.",
   socials: {
     linkedin: "https://www.linkedin.com/in/nishant-joshi20",
     github: "https://github.com/nishantjoshi20",
@@ -133,24 +133,29 @@ export const profileData: PortfolioProfile = {
   certifications: certificationsData,
   heroStats: [
     {
-      label: "Discovery to Launch",
-      value: "10+",
-      subtext: "End-to-end features shipped"
+      label: "Experience",
+      value: "3+ Yrs",
+      subtext: "B2B SaaS, Cost Automation & B2C AI"
     },
     {
-      label: "Sourcing Cycle Time",
-      value: "-42%",
-      subtext: "Cycle reduction achieved at ProcUrPal"
+      label: "Procurement TAT",
+      value: "15d → 7d",
+      subtext: "53% reduction for enterprise clients"
     },
     {
-      label: "Costing Turnaround",
-      value: "85%",
-      subtext: "Faster estimation at CostItRight"
+      label: "User Activation Lift",
+      value: "42% → 55%",
+      subtext: "Onboarding redesign & funnel optimization"
     },
     {
-      label: "Sprints & Ceremonies",
-      value: "35+",
-      subtext: "Agile sprints led with cross-functional teams"
+      label: "Release Cycles",
+      value: "3wks → 2wks",
+      subtext: "+33% release frequency & 100% store compliance"
+    },
+    {
+      label: "Adoption & Efficiency",
+      value: "60%",
+      subtext: "Enterprise user adoption & -30% tickets"
     }
   ],
   howIWorkSteps: [
@@ -2516,63 +2521,168 @@ export const caseStudiesData: CaseStudy[] = [
 
 export const experienceData: ExperienceItem[] = [
   {
-    id: "exp-1",
+    id: "exp-softude",
     role: "Associate Product Manager",
-    company: "ProcUrPal",
-    companyUrl: "https://procurpal.in",
-    location: "Bengaluru, India / Hybrid",
-    period: "2024 — Present",
-    productDomain: "AI-Powered Procurement Cloud (DPIIT Recognized & ISO 27001 Certified)",
-    summary: "Leading product strategy, user discovery, and agile delivery for ProcUrPal's AI Intake Assistant, BidSense quote normalization engine, and spend analytics suite.",
-    problem: "Enterprise procurement teams suffered from 4-week sourcing cycles caused by unstructured purchase requisitions, missing line-item data, and manual multi-supplier quote comparisons.",
-    action: "Conducted 30+ buyer and supplier discovery sessions, authored detailed PRDs for conversational IntakeAI and BidSense quote parser, prioritized roadmap using RICE, and led a 7-person cross-functional engineering and design team in 2-week agile sprints.",
-    outcome: "Reduced sourcing cycle time by 42%, improved vendor bid compliance by 38%, cut quote comparison time by 80%, and helped drive enterprise platform adoption with 94% retention.",
+    company: "Softude",
+    companyUrl: "https://www.softude.com",
+    location: "Indore, M.P. / Hybrid",
+    period: "Nov 2025 — Aug 2026",
+    productName: "Cost It Right — Enterprise Costing, Automation & RFQ SaaS Platform",
+    productDomain: "Enterprise B2B SaaS • Manufacturing Cost Automation & RFQ Intelligence",
+    summary: "Owned product initiatives from discovery through launch for Cost It Right. Partnered with Tier-1 enterprise clients (Havells, Hero MotoCorp, TVS, Escorts Kubota, Jash Engineering) to automate should-costing, streamline RFQ procurement, and deploy AI-assisted workflows.",
+    problem: "Enterprise procurement and cost-engineering teams faced 15-day procurement turnaround times (TAT), manual multi-tab spreadsheet validation bottlenecks, lack of standardized should-cost models across 100+ suppliers, and high support ticket loads.",
+    action: "Applied AI agents and workflow automation for feature definition, costing workflows, and enterprise dashboards. Validated Vendor-, Supplier-, and Customer-based costing models (ZBC/VBC/CBC) with simulation workflows. Managed automated batch Excel uploads and schema validation using Python & Playwright. Built regression testing suites and centralized 45+ product guides and interactive demos/SOPs.",
+    outcome: "Reduced procurement TAT from 15 to 7 days (53% reduction), achieved 60% user adoption across 20+ users and 10+ workflows, cut support tickets by 30%, saved ~3 hrs/week per client team, and slashed manual data setup and testing cycles from 7 to 3 days (57% faster).",
     highlightMetrics: [
-      "-42% Sourcing Cycle Time",
-      "+38% Bid Compliance",
-      "80% Faster Quote Comparisons"
+      "Procurement TAT: 15d → 7d (-53%)",
+      "60% Enterprise Adoption",
+      "-30% Support Tickets",
+      "Data Setup: 7d → 3d (-57%)"
     ],
-    stakeholders: ["ML/AI Engineers", "Backend Leads", "Senior Product Designer", "Founding Leadership", "Enterprise CPOs"],
-    skillsUsed: ["AI Product Management", "Conversational UX", "PRD Authoring", "Source-to-Pay (S2P)", "RICE Prioritization", "Mixpanel Analytics", "Agile/Scrum"]
+    clients: ["Havells", "Hero MotoCorp", "TVS", "Escorts Kubota", "Jash Engineering"],
+    stakeholders: ["Enterprise CPOs & Sourcing Heads", "Cost Engineering Teams", "Full-Stack & ML Developers", "Tier-1 Suppliers", "Client Enablement Leads"],
+    skillsUsed: [
+      "Costing Architecture (ZBC/VBC/CBC)",
+      "AI Agents & Automation",
+      "BRD/FRD/SRD Engineering",
+      "Python & Playwright Automation",
+      "Multi-Tier Approvals (DAL 1/2/3) & RBAC",
+      "Regression Testing & Monitoring",
+      "SOP & Documentation Enablement"
+    ],
+    keyDeliverables: [
+      {
+        title: "AI-Enabled Product Development",
+        description: "Owned product initiatives across requirements, prototyping, validation, and testing; applied AI agents and workflow automation to accelerate feature definition, costing workflows, enterprise dashboards, and repetitive product operations."
+      },
+      {
+        title: "Enterprise Product & Procurement Impact",
+        description: "Partnered with 3+ enterprise clients including Havells, Hero MotoCorp, TVS, Escorts Kubota, and Jash Engineering; supported 20+ users across 10+ workflows and 100+ suppliers, shipped 3 dashboards/modules, reached 60% adoption, reduced procurement TAT from 15 to 7 days, cut support tickets by 30%, and saved ~3 hours/week for client teams."
+      },
+      {
+        title: "Costing Architecture & Simulation",
+        description: "Validated Vendor-, Supplier-, and Customer-Based costing models; designed simulation workflows for cost-change and impact analysis and defined KPI reporting for procurement and cost visibility."
+      },
+      {
+        title: "Data Ingestion & Process Automation",
+        description: "Product-managed batch Excel uploads, dynamic forms, and schema validation using Python and Playwright, reducing manual data setup and testing cycles from 7 days to 3 days (57%)."
+      },
+      {
+        title: "Quality & Client Enablement",
+        description: "Built regression testing and performance-monitoring workflows to detect issues earlier; introduced centralized product documentation with 45+ guides and interactive demos/SOPs for client and developer enablement."
+      }
+    ]
   },
   {
-    id: "exp-2",
-    role: "Associate Product Manager",
-    company: "CostItRight",
-    companyUrl: "https://www.costitright.com",
-    location: "Indore / Hybrid",
-    period: "2023 — 2024",
-    productDomain: "Manufacturing Should-Costing & Simulation SaaS (Pride of MP Award 2024)",
-    summary: "Drove end-to-end product discovery, specification, and execution for the core parametric should-cost engine, multi-tier BOM rollup, and dynamic commodity price simulator.",
-    problem: "Manufacturing enterprises relied on fragile, multi-tab Excel models, causing 5.5-day estimation delays, formula errors, and high cross-estimator quote variance (18%).",
-    action: "Shadowed 18 cost estimation engineers and procurement directors, authored PRDs for 22 standardized manufacturing process algorithms, designed intuitive BOM tree-views, and built a 1-click Excel migration tool to accelerate user onboarding.",
-    outcome: "Cut RFQ estimation turnaround time by 85% (from 5.5 days to <2 hours), reduced cross-estimator quote variance by 28%, and contributed to CostItRight winning the prestigious Pride of MP Award 2024.",
+    id: "exp-mintosh",
+    role: "Product Manager (Intern)",
+    company: "Mintosh",
+    location: "Remote / India",
+    period: "Jan 2024 — Oct 2025",
+    productName: "AFTR — B2C AI-Powered Mobile & Web Product",
+    productDomain: "B2C AI Consumer Product • 0-to-1 Discovery & Mobile Delivery",
+    summary: "Led 0-to-1 product discovery and MVP definition for AFTR, an AI-powered consumer product. Drove user research, PRD authoring, backlog management across 80+ user stories, and bi-weekly iOS/Android releases.",
+    problem: "Early consumer onboarding suffered from high user drop-off (48%) across an ambiguous 7-step onboarding flow, with sluggish 3-week release cycles hindering rapid customer validation.",
+    action: "Conducted 30+ qualitative user interviews, usability tests, and competitor teardowns. Redesigned onboarding into a streamlined 4-step progressive flow. Translated user needs into comprehensive PRDs, Figma workflows, and an 80+ story backlog while establishing bi-weekly mobile release cadences.",
+    outcome: "Increased user activation from 42% to 55% (+31% relative lift), reduced onboarding drop-off from 48% to 34%, boosted release frequency by 33% (shortened cycle from 3 weeks to 2 weeks), and maintained 100% App Store and Google Play store compliance.",
     highlightMetrics: [
-      "85% Faster RFQ Costing",
-      "-28% Quote Variance",
-      "Pride of MP Award 2024"
+      "Activation: 42% → 55% (+31%)",
+      "Drop-off: 48% → 34%",
+      "Release Cycles: 3wks → 2wks (+33%)",
+      "100% Store Compliance"
     ],
-    stakeholders: ["Core Engineering Team", "Cost Engineering Leads", "Enterprise Procurement Directors", "Executive Leadership"],
-    skillsUsed: ["Parametric Cost Modeling", "B2B SaaS Strategy", "BOM Architecture", "User Shadowing", "Agile Execution", "Jira/Scrum"]
+    stakeholders: ["iOS & Android Mobile Engineers", "UI/UX Designers", "Founding Team", "Beta User Cohorts"],
+    skillsUsed: [
+      "0-to-1 Product Discovery",
+      "User Interviews & Usability Studies",
+      "PRD & User Story Writing",
+      "Backlog Prioritization (80+ Stories)",
+      "Mobile Release Management (iOS/Android)",
+      "Onboarding Funnel Optimization",
+      "Agile & Scrum Delivery"
+    ],
+    keyDeliverables: [
+      {
+        title: "0-to-1 Product Discovery & MVP",
+        description: "Led product discovery and MVP definition for a B2C AI product, translating user and business needs into PRDs, Figma workflows, prototypes, and an 80+ story backlog; drove sprint planning, prioritization, and execution."
+      },
+      {
+        title: "User Research & Activation",
+        description: "Conducted 30+ user interviews, usability studies, and competitor analysis; redesigned onboarding from 7 to 4 steps, increasing activation from 42% to 55% and reducing drop-off from 48% to 34%."
+      },
+      {
+        title: "Mobile Delivery & Release Management",
+        description: "Scoped and prioritized MVP features and coordinated bi-weekly iOS/Android releases, increasing release frequency by 33% and reducing release cycles from 3 weeks to 2 weeks while maintaining 100% store compliance."
+      }
+    ]
   },
   {
-    id: "exp-3",
-    role: "Product Operations & Business Analyst",
-    company: "SaaS & Tech Ventures",
-    location: "India / Remote",
-    period: "2022 — 2023",
-    productDomain: "B2B Enterprise Operations & Product Analytics",
-    summary: "Partnered with product managers and business leadership to define KPI trees, build automated telemetry dashboards, and synthesize customer feedback loops into actionable roadmap epics.",
-    problem: "Product decisions relied on fragmented qualitative feedback without centralized funnel telemetry or structured churn analysis.",
-    action: "Built automated SQL and BI cohort dashboards tracking feature adoption and churn drivers; established weekly Voice-of-Customer triage rituals connecting support to product.",
-    outcome: "Identified top 3 product churn drivers, directly influencing the core product roadmap and improving customer onboarding satisfaction.",
+    id: "exp-atg",
+    role: "Tech Product Manager (Intern)",
+    company: "Across The Globe (ATG)",
+    location: "Remote / India",
+    period: "Nov 2023 — Jun 2024",
+    productName: "Procurpal (B2B Procurement) & Treato (Beauty & Grooming Marketplace)",
+    productDomain: "B2B SaaS Procurement & B2C Service Marketplace",
+    summary: "Managed technical product specifications and pre-launch delivery across two flagship platforms: Procurpal (AI-based supplier recommendation & e-auctions) and Treato (beauty booking flows and salon scheduling dashboards).",
+    problem: "Enterprise procurement teams lacked automated supplier scoring and digital reverse e-auction mechanisms, while salon partners lacked integrated digital scheduling and customer booking management.",
+    action: "Translated enterprise requirements into functional specifications (BRD/FRD/SRDs) and workflow logic for AI supplier matchmaking and e-auctions. Designed end-to-end customer booking flows and salon scheduling dashboards in Figma, driving sprint delivery and cross-functional QA handoffs through pre-launch.",
+    outcome: "Successfully delivered validated pre-launch feature readiness for Procurpal's AI e-auction suite and completed Treato's multi-tier salon scheduling dashboard with positive stakeholder sign-off.",
     highlightMetrics: [
-      "40+ Dashboards Built",
-      "80+ User Calls Synthesized",
-      "Data-Driven Product Epics"
+      "2 Platforms Shipped to Pre-Launch",
+      "AI Sourcing Specs Delivered",
+      "Complete Salon Dashboard Delivery"
     ],
-    stakeholders: ["Director of Product", "Customer Success Leads", "Data Engineers", "Sales"],
-    skillsUsed: ["SQL & Telemetry", "Cohort Analysis", "Customer Discovery", "KPI Trees", "Tableau/Metabase", "User Story Mapping"]
+    stakeholders: ["Enterprise Procurement Clients", "Salon Business Owners", "Tech & Backend Leads", "Product Designers"],
+    skillsUsed: [
+      "Technical Product Management",
+      "Functional Specifications (BRD/FRD/SRD)",
+      "AI Supplier Matching & E-Auctions",
+      "Marketplace Booking Workflows",
+      "Sprint Delivery & Engineering Handoffs",
+      "Pre-Launch Feature Testing"
+    ],
+    keyDeliverables: [
+      {
+        title: "Procurpal — B2B SaaS Procurement Platform",
+        description: "Translated enterprise requirements into workflows and functional specifications for AI-based supplier recommendations and e-auctions; prioritized backlog, aligned design/engineering on scope, and owned feature testing through pre-launch readiness."
+      },
+      {
+        title: "Treato — Beauty & Grooming Marketplace",
+        description: "Defined customer booking flows and salon scheduling dashboards from client requirements and Figma workflows; drove handoffs, sprint delivery, testing, and stakeholder feedback through pre-launch."
+      }
+    ]
+  },
+  {
+    id: "exp-indvibe",
+    role: "Product Manager Intern",
+    company: "IndVibe Infotech Pvt Ltd",
+    location: "Indore, M.P.",
+    period: "Jul 2023 — Oct 2023",
+    productDomain: "Digital Product Discovery & User Research",
+    summary: "Conducted customer discovery research, competitive teardowns, and user story mapping for early-stage digital product initiatives (concurrent engagement with foundational PM projects).",
+    problem: "Early-stage digital solutions lacked structured user persona models, feature prioritization matrices, and validated functional requirement baselines.",
+    action: "Conducted competitor benchmarking, interviewed target user demographics, mapped user journeys, and authored foundational user stories and feature requirement backlogs.",
+    outcome: "Delivered comprehensive competitive teardown reports and validated customer persona matrices that defined the technical scope for upcoming sprint roadmaps.",
+    highlightMetrics: [
+      "Comprehensive Market Research",
+      "User Persona & Journey Maps",
+      "Baseline PRD Scoping"
+    ],
+    stakeholders: ["Product Leads", "UI/UX Designers", "Engineering Teams"],
+    skillsUsed: [
+      "User Research & Discovery",
+      "Competitive Benchmarking",
+      "User Journey Mapping",
+      "User Story Mapping",
+      "Feature Prioritization"
+    ],
+    keyDeliverables: [
+      {
+        title: "Market Discovery & Personas",
+        description: "Conducted structured user research, surveys, and competitor teardowns to map customer pain points and establish baseline feature matrices for agile sprint planning."
+      }
+    ]
   }
 ];
 
@@ -2675,27 +2785,33 @@ export const toolsData: ToolItem[] = [
 ];
 
 export const careerSnapshotData: CareerSnapshot = {
-  yearsOfExperience: "2+ Years in Product Management & SaaS",
-  currentRole: "Associate Product Manager @ ProcUrPal (ex-CostItRight)",
+  yearsOfExperience: "3+ Years in Product Management & Enterprise B2B SaaS",
+  currentRole: "Associate Product Manager @ Softude (Cost It Right)",
   education: [
     {
-      degree: "Bachelor of Engineering / Technology",
-      institution: "Top Tier Engineering & Product Institute",
-      year: "2020 — 2024",
-      focus: "Focus in Product Design, Operations Research, and Software Systems"
+      degree: "Master of Business Administration (MBA)",
+      institution: "Devi Ahilya Vishwavidyalaya, Indore, M.P.",
+      year: "Aug 2024",
+      focus: "Business Strategy, Operations & Product Management"
+    },
+    {
+      degree: "Bachelor of Technology (B.Tech)",
+      institution: "Medi-Caps University, Indore, M.P.",
+      year: "May 2020",
+      focus: "Engineering, Software Systems & Data Structures"
     }
   ],
   certifications: certificationsData,
-  keyDomains: ["AI Procurement & S2P", "Manufacturing Should-Costing", "Consumer AI Prototypes", "B2B Enterprise SaaS", "PLG & Product Discovery"],
+  keyDomains: ["Enterprise B2B SaaS", "Manufacturing Cost Automation", "B2C AI Mobile Products", "Procurement & S2P", "0-to-1 Product Discovery"],
   topSpecialties: [
-    "Product Discovery & JTBD",
-    "Source-to-Pay & Cost Modeling",
-    "Interactive AI Prototyping & Prompt Engineering",
-    "Funnel & Cohort Analytics",
-    "PRDs & Technical Scoping",
-    "Agile Sprint Delivery & Cross-Functional Squad Leadership"
+    "Requirements Engineering (BRD/FRD/SRD)",
+    "Costing Architecture (ZBC/VBC/CBC)",
+    "AI-Enabled Product Development & Workflows",
+    "Enterprise Workflows & Multi-Tier Approvals (DAL 1/2/3)",
+    "0-to-1 Product Discovery & User Interviews",
+    "Agile & Scrum Sprint Delivery"
   ],
-  availability: "Open to High-Impact APM / PM Opportunities • Available for Interviews",
+  availability: "Open to Associate Product Manager & Technical PM Opportunities",
   resumeDownloadUrl: "#download-resume"
 };
 

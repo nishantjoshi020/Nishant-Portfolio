@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { 
   BookOpen, 
   Clock, 
@@ -45,11 +46,13 @@ export const WritingSection: React.FC<WritingSectionProps> = ({ articles }) => {
       {/* Articles Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {articles.map((article) => (
-          <div
+          <motion.div
             key={article.id}
             id={`article-card-${article.id}`}
             onClick={() => setSelectedArticle(article)}
-            className="group p-6 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-blue-500/50 dark:hover:border-blue-500/50 shadow-xs hover:shadow-lg transition-all cursor-pointer flex flex-col justify-between space-y-4"
+            whileHover={{ y: -6, scale: 1.015 }}
+            transition={{ duration: 0.25, ease: 'easeOut' }}
+            className="group p-6 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-blue-500/50 dark:hover:border-blue-500/50 shadow-xs hover:shadow-xl dark:hover:shadow-neutral-950/80 cursor-pointer flex flex-col justify-between space-y-4"
           >
             <div className="space-y-3">
               <div className="flex items-center justify-between text-xs">
@@ -75,7 +78,7 @@ export const WritingSection: React.FC<WritingSectionProps> = ({ articles }) => {
               <span>Read Perspective</span>
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 

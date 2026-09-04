@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { 
   ArrowRight, 
   FileText, 
+  Download,
+  Check,
   Linkedin, 
   Github, 
   Mail, 
@@ -19,6 +21,7 @@ import {
   Target
 } from 'lucide-react';
 import { PortfolioProfile } from '../types/portfolio';
+import { generateResumePDF } from '../utils/generateResumePDF';
 
 interface HeroProps {
   profile: PortfolioProfile;
@@ -27,6 +30,13 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ profile, onOpenResume }) => {
   const [activeStage, setActiveStage] = useState<number>(0);
+  const [downloaded, setDownloaded] = useState<boolean>(false);
+
+  const handleDownload = () => {
+    generateResumePDF();
+    setDownloaded(true);
+    setTimeout(() => setDownloaded(false), 3000);
+  };
 
   const stages = [
     {
@@ -100,28 +110,6 @@ export const Hero: React.FC<HeroProps> = ({ profile, onOpenResume }) => {
           
           {/* Left Column: PM Positioning Statement & CTAs */}
           <div className="lg:col-span-7 space-y-6">
-            
-            {/* Role & Status Badges */}
-            <div className="flex flex-wrap items-center gap-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 dark:bg-blue-950/60 border border-blue-200/80 dark:border-blue-800/80 text-blue-700 dark:text-blue-300 text-xs font-semibold tracking-wide shadow-xs">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-                <span>{profile.title}</span>
-                <span className="text-neutral-400 dark:text-neutral-600">•</span>
-                <span className="text-neutral-600 dark:text-neutral-400 font-normal">Discovery → Execution → Impact</span>
-              </div>
-
-              {profile.certifications && profile.certifications.length > 0 && (
-                <a
-                  href="#snapshot"
-                  id="hero-cert-badge-link"
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-50 dark:bg-emerald-950/50 border border-emerald-200/80 dark:border-emerald-800/80 text-emerald-800 dark:text-emerald-300 text-xs font-semibold hover:bg-emerald-100 dark:hover:bg-emerald-900/60 transition-colors shadow-xs"
-                >
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                  <span>{profile.certifications.length}x Verified PM & Agile Certified</span>
-                  <span className="text-emerald-600/70 dark:text-emerald-400/70 text-[10px] hidden sm:inline">• View All Credentials</span>
-                </a>
-              )}
-            </div>
 
             {/* Candidate Name & Hero Headline */}
             <div className="space-y-3">
@@ -153,12 +141,21 @@ export const Hero: React.FC<HeroProps> = ({ profile, onOpenResume }) => {
               </a>
 
               <button
-                onClick={onOpenResume}
+                onClick={handleDownload}
                 id="hero-download-resume-cta"
-                className="px-5 py-3.5 text-sm font-semibold text-neutral-800 dark:text-neutral-200 bg-white dark:bg-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl border border-neutral-300 dark:border-neutral-700 shadow-xs hover:shadow transition-all flex items-center gap-2"
+                className="px-5 py-3.5 text-sm font-semibold text-neutral-800 dark:text-neutral-200 bg-white dark:bg-neutral-900 hover:bg-neutral-50 dark:hover:bg-neutral-800 rounded-xl border border-neutral-300 dark:border-neutral-700 shadow-xs hover:shadow transition-all flex items-center gap-2 cursor-pointer"
               >
-                <FileText className="w-4 h-4 text-blue-600 dark:text-blue-400" />
-                <span>Download Resume</span>
+                {downloaded ? (
+                  <>
+                    <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
+                    <span className="text-emerald-700 dark:text-emerald-400">Resume Downloaded!</span>
+                  </>
+                ) : (
+                  <>
+                    <Download className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+                    <span>Download Resume</span>
+                  </>
+                )}
               </button>
             </div>
 

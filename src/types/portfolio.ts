@@ -160,6 +160,7 @@ export interface ExperienceItem {
   location: string;
   period: string;
   productDomain: string;
+  productName?: string;
   summary: string;
   problem: string;
   action: string;
@@ -167,6 +168,9 @@ export interface ExperienceItem {
   highlightMetrics: string[];
   stakeholders: string[];
   skillsUsed: string[];
+  keyDeliverables?: { title: string; description: string }[];
+  bulletPoints?: string[];
+  clients?: string[];
 }
 
 export interface ProductPrinciple {

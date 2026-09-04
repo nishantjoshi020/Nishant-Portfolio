@@ -507,7 +507,7 @@ export const CaseStudyDetailModal: React.FC<CaseStudyDetailModalProps> = ({
                       href={diag.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-4 rounded-xl bg-gradient-to-br from-indigo-50/50 to-blue-50/30 dark:from-indigo-950/30 dark:to-blue-950/20 border border-indigo-200/80 dark:border-indigo-850 hover:border-indigo-400 dark:hover:border-indigo-600 transition-all group space-y-2.5 shadow-2xs block"
+                      className="p-4 rounded-xl bg-gradient-to-br from-indigo-50/50 to-blue-50/30 dark:from-indigo-950/30 dark:to-blue-950/20 border border-indigo-200/80 dark:border-indigo-800 hover:border-indigo-400 dark:hover:border-indigo-600 transition-all group space-y-2.5 shadow-2xs block"
                     >
                       <div className="flex items-center justify-between">
                         <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-indigo-100 dark:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">

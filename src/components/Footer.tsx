@@ -1,13 +1,12 @@
 import React from 'react';
-import { ArrowUp, Heart, Shield, Sparkles } from 'lucide-react';
+import { ArrowUp } from 'lucide-react';
 import { PortfolioProfile } from '../types/portfolio';
 
 interface FooterProps {
   profile: PortfolioProfile;
-  onOpenCustomizer: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ profile, onOpenCustomizer }) => {
+export const Footer: React.FC<FooterProps> = ({ profile }) => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -54,22 +53,6 @@ export const Footer: React.FC<FooterProps> = ({ profile, onOpenCustomizer }) => 
             <ArrowUp className="w-3.5 h-3.5" />
           </button>
 
-        </div>
-
-        {/* Bottom copyright & customization helper */}
-        <div className="pt-6 border-t border-neutral-100 dark:border-neutral-900 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px]">
-          <p>© {new Date().getFullYear()} {profile.name}. All rights reserved. Crafted for Product Management excellence.</p>
-          
-          <div className="flex items-center gap-3">
-            <button
-              onClick={onOpenCustomizer}
-              className="text-blue-600 dark:text-blue-400 hover:underline font-medium"
-            >
-              ⚙ Edit Template Placeholders
-            </button>
-            <span>•</span>
-            <span className="text-neutral-400">APM / PM Portfolio</span>
-          </div>
         </div>
 
       </div>

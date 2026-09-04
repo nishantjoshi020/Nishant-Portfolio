@@ -10,6 +10,7 @@ import {
   careerSnapshotData 
 } from './data/portfolioData';
 
+import { ScrollProgressBar } from './components/ScrollProgressBar';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
@@ -21,14 +22,11 @@ import { CareerSnapshot } from './components/CareerSnapshot';
 import { WritingSection } from './components/WritingSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
-import { CustomizerModal } from './components/CustomizerModal';
 
 export default function App() {
   const [profile, setProfile] = useState(initialProfile);
   const [darkMode, setDarkMode] = useState(false);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
-  const [isCustomizerOpen, setIsCustomizerOpen] = useState(false);
-  const [highlightPlaceholders, setHighlightPlaceholders] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
 
   // Handle Dark Mode toggle
@@ -81,17 +79,17 @@ export default function App() {
   }, []);
 
   return (
-    <div className={`min-h-screen bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50 transition-colors duration-200 ${
-      highlightPlaceholders ? 'highlight-placeholders' : ''
-    }`}>
+    <div className={`${darkMode ? 'dark ' : ''}min-h-screen bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50 transition-colors duration-200`}>
       
+      {/* Viewport Scroll Progress Indicator */}
+      <ScrollProgressBar />
+
       {/* Sticky Top Navigation */}
       <Navbar
         profile={profile}
         darkMode={darkMode}
         setDarkMode={handleToggleDarkMode}
         onOpenResume={() => setIsResumeOpen(true)}
-        onOpenCustomizer={() => setIsCustomizerOpen(true)}
         activeSection={activeSection}
       />
 
@@ -145,19 +143,7 @@ export default function App() {
       {/* Footer */}
       <Footer 
         profile={profile}
-        onOpenCustomizer={() => setIsCustomizerOpen(true)}
       />
-
-      {/* Customizer & Content Manager Modal */}
-      {isCustomizerOpen && (
-        <CustomizerModal
-          profile={profile}
-          setProfile={setProfile}
-          onClose={() => setIsCustomizerOpen(false)}
-          highlightPlaceholders={highlightPlaceholders}
-          setHighlightPlaceholders={setHighlightPlaceholders}
-        />
-      )}
 
       {/* Resume Quick Trigger from Navbar/Hero */}
       {isResumeOpen && (
