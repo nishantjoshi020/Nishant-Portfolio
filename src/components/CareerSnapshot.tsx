@@ -351,14 +351,12 @@ export const CareerSnapshot: React.FC<CareerSnapshotProps> = ({
               {/* Top Banner */}
               <div className="border-b border-neutral-300 pb-4 flex flex-col sm:flex-row sm:items-end justify-between gap-2">
                 <div>
-                  <h1 className="text-2xl font-bold text-neutral-900">{profile.name}</h1>
-                  <p className="text-sm font-semibold text-blue-600">{profile.title}</p>
-                  <p className="text-neutral-500 text-xs mt-0.5">{profile.location}</p>
+                  <h1 className="text-2xl font-bold text-neutral-900">NISHANT JOSHI</h1>
+                  <p className="text-sm font-semibold text-neutral-700">ASSOCIATE PRODUCT MANAGER</p>
                 </div>
                 <div className="text-right text-xs text-neutral-600 space-y-0.5">
-                  <p>{profile.socials.email}</p>
-                  <p>{profile.socials.linkedin}</p>
-                  <p>{profile.socials.github}</p>
+                  <p>+91 7000918880 | nishantjoshi020@gmail.com</p>
+                  <p>linkedin.com/in/nishant-joshi20</p>
                 </div>
               </div>
 
@@ -368,7 +366,7 @@ export const CareerSnapshot: React.FC<CareerSnapshotProps> = ({
                   Professional Summary
                 </h4>
                 <p className="text-neutral-700 leading-relaxed text-xs">
-                  {profile.bioSummary}
+                  Associate Product Manager with hands-on experience across B2B SaaS, enterprise software, and consumer AI mobile products, managing the product lifecycle and setting quarterly Objectives and Key Results (OKRs). Track record taking products from 0 to 1 through launch, running customer discovery, gathering client requirements, and writing Product Requirements Documents (PRDs) with wireframes and edge cases, then collaborating with engineering, design, and QA through Agile sprints to ship them. Technically fluent in API integration, schema validation, and workflow automation, backed by user research, experimentation, A/B testing, and product analytics to guide roadmap decisions. Certified in Agile/Scrum, Jira, and AI-First Product Management.
                 </p>
               </div>
 
@@ -379,114 +377,83 @@ export const CareerSnapshot: React.FC<CareerSnapshotProps> = ({
                 </h4>
                 
                 <div className="space-y-4">
+                  {/* Job 1: Softude */}
                   <div>
                     <div className="flex justify-between items-baseline">
-                      <span className="font-bold text-neutral-900">Softude — Associate Product Manager</span>
-                      <span className="text-neutral-500 text-xs">Nov 2025 — Aug 2026</span>
+                      <span className="font-bold text-neutral-900">Softude | Associate Product Manager | Cost It Right (Enterprise Costing, RFX, eAuction & Automation SaaS)</span>
+                      <span className="text-neutral-500 text-xs italic">Nov 2025 to Aug 2026</span>
                     </div>
-                    <p className="text-xs text-neutral-600 italic">Product: Cost It Right — Enterprise Costing, Automation & RFQ SaaS Platform</p>
                     <ul className="list-disc list-inside text-xs text-neutral-700 mt-1 space-y-1">
-                      <li><strong>AI-Enabled Product Development:</strong> Owned initiatives across requirements, prototyping, validation, and testing; applied AI agents and workflow automation to accelerate feature definitions and costing dashboards.</li>
-                      <li><strong>Enterprise Procurement Impact:</strong> Partnered with Tier-1 enterprise clients (Havells, Hero MotoCorp, TVS, Escorts Kubota, Jash Engineering); supported 20+ users, 100+ suppliers, shipped 3 dashboards, reached 60% adoption, reduced procurement TAT from 15 to 7 days, and cut support tickets by 30%.</li>
-                      <li><strong>Costing Architecture & Simulation:</strong> Validated Vendor-, Supplier-, and Customer-Based costing models (ZBC/VBC/CBC) with dynamic simulation workflows and KPI reporting.</li>
-                      <li><strong>Data Ingestion & Process Automation:</strong> Managed batch Excel uploads, dynamic forms, and schema validation using Python and Playwright, reducing data setup and testing cycles from 7 days to 3 days (57%).</li>
-                      <li><strong>Quality & Enablement:</strong> Built regression testing workflows and introduced centralized product documentation with 45+ guides and interactive SOPs.</li>
+                      <li><strong>AI-Enabled Product Development & Velocity:</strong> Led product lifecycle initiatives across requirements gathering, rapid prototyping, and validation, integrating AI agents into costing pipelines to compress release cycles from 3 weeks to 2 weeks (45% faster velocity).</li>
+                      <li><strong>Enterprise Client Delivery & Adoption:</strong> Scoped and shipped enterprise RFX and eAuction modules to 5 marquee clients (Havells, Hero MotoCorp, TVS), securing 60% module adoption and cutting procurement TAT from 15 to 7 days.</li>
+                      <li><strong>Costing Architecture & Simulation:</strong> Validated system architecture for Zero-Based Costing (ZBC), Vendor (VBC), and Customer (CBC) models, designing cost change simulation models and establishing KPI dashboards for enterprise procurement visibility.</li>
+                      <li><strong>API Data Ingestion & Quality Automation:</strong> Built a Quality Assurance (QA) automation suite and data validation engine (Python, Playwright) for User Acceptance Testing (UAT) with 45+ schema rules and batch Excel uploads, slashing manual data setup from 7 to 3 days (57% reduction).</li>
+                      <li><strong>Documentation & Knowledge Base:</strong> Built a centralized documentation portal (MkDocs Material) with 45+ interactive Standard Operating Procedures (SOPs), process architecture diagrams, and technical specs for client enablement, developer handoffs, and audit readiness.</li>
                     </ul>
                   </div>
 
+                  {/* Job 2: Mintosh */}
                   <div>
                     <div className="flex justify-between items-baseline">
-                      <span className="font-bold text-neutral-900">Mintosh — Product Manager (Intern)</span>
-                      <span className="text-neutral-500 text-xs">Jan 2024 — Oct 2025</span>
+                      <span className="font-bold text-neutral-900">Mintosh | Product Manager Intern | AFTR (B2C AI Persona, Video & Voice Generation App)</span>
+                      <span className="text-neutral-500 text-xs italic">Jan 2024 to Oct 2025</span>
                     </div>
-                    <p className="text-xs text-neutral-600 italic">Product: AFTR — B2C AI-Powered Mobile & Web Product</p>
                     <ul className="list-disc list-inside text-xs text-neutral-700 mt-1 space-y-1">
-                      <li><strong>0-to-1 Product Discovery & MVP:</strong> Led product discovery and MVP definition, translating user and business needs into PRDs, Figma workflows, prototypes, and an 80+ story backlog; drove sprint execution.</li>
-                      <li><strong>User Research & Activation:</strong> Conducted 30+ user interviews, usability studies, and competitor teardowns; redesigned onboarding from 7 to 4 steps, boosting activation from 42% to 55% and cutting drop-off from 48% to 34%.</li>
-                      <li><strong>Mobile Delivery & Release Governance:</strong> Coordinated bi-weekly iOS/Android releases, increasing release frequency by 33% and reducing release cycles from 3 to 2 weeks with 100% store compliance.</li>
+                      <li><strong>Product Ownership & Strategy:</strong> Owned the product vision, strategy, UI/UX design, and roadmap for AFTR, an early-stage startup B2C AI mobile app, driving product-market fit and key product decisions from initial concept through market launch across engineering, design, and business.</li>
+                      <li><strong>Product Discovery & Agile Backlog:</strong> Authored 25+ PRDs with detailed wireframes, user flows, edge-case matrices, and acceptance criteria, managing an 80+ user story product backlog in Jira and facilitating sprint planning, grooming, and retrospectives across 12 Agile cycles.</li>
+                      <li><strong>User Research & UI/UX Design:</strong> Designed and executed a structured customer discovery program with user interviews and usability studies, leading Figma UI/UX design to reduce signup steps from 7 to 4 and lift user activation from 42% to 55%.</li>
+                      <li><strong>A/B Testing & Product Analytics:</strong> Defined experimentation frameworks and ran A/B tests on onboarding, CTA placements, and notification cadence, instrumenting product analytics in Firebase to track retention cohorts, feature adoption, and session depth to prioritize the quarterly roadmap.</li>
+                      <li><strong>Cross-Platform Release Management:</strong> Scoped, prioritized, and launched Minimum Viable Product (MVP) features for iOS and Android mobile apps, compressing release turnaround from 3 to 2 weeks (33% faster) and increasing release frequency by 50% under 100% App Store and Google Play compliance.</li>
+                      <li><strong>Cross-Functional Team Leadership:</strong> Directly led a cross-functional team of software engineers, UI/UX designers, QA testers, and a social media manager across daily standups, weekly sprint reviews, and bi-weekly stakeholder demos, unblocking dependencies and negotiating scope trade-offs to protect delivery timelines.</li>
+                      <li><strong>Competitive Analysis & Go-to-Market (GTM):</strong> Conducted systematic competitive analysis and teardowns across competitor mobile apps to define positioning, feature differentiation, and App Store Optimization (ASO) metadata strategy, coordinating pre-launch beta testing with 200+ early adopters.</li>
                     </ul>
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between items-baseline">
-                      <span className="font-bold text-neutral-900">Across The Globe (ATG) — Tech Product Manager (Intern)</span>
-                      <span className="text-neutral-500 text-xs">Nov 2023 — Jun 2024</span>
-                    </div>
-                    <p className="text-xs text-neutral-600 italic">Procurpal (B2B Procurement SaaS) & Treato (Beauty & Grooming Marketplace)</p>
-                    <ul className="list-disc list-inside text-xs text-neutral-700 mt-1 space-y-1">
-                      <li><strong>Procurpal:</strong> Translated enterprise requirements into workflows and functional specifications for AI supplier recommendations and e-auctions; owned feature testing through pre-launch readiness.</li>
-                      <li><strong>Treato:</strong> Defined customer booking flows and salon scheduling dashboards from client requirements and Figma workflows through pre-launch.</li>
-                    </ul>
-                  </div>
-
-                  <div>
-                    <div className="flex justify-between items-baseline">
-                      <span className="font-bold text-neutral-900">IndVibe Infotech Pvt Ltd — Product Manager Intern</span>
-                      <span className="text-neutral-500 text-xs">Jul 2023 — Oct 2023</span>
-                    </div>
-                    <p className="text-xs text-neutral-600 italic">Digital Product Discovery & User Research (Concurrent engagement)</p>
                   </div>
                 </div>
               </div>
 
-              {/* Certifications & Verified Credentials */}
-              {certifications.length > 0 && (
-                <div className="space-y-2">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-900 border-b border-neutral-200 pb-1 flex items-center justify-between">
-                    <span>Certifications & Education Highlights</span>
-                    <span className="text-[10px] text-blue-600 font-semibold normal-case">AirTribe AI-First PM • Univ of Alberta</span>
-                  </h4>
-                  {certifications.slice(0, 3).map((cert, cIdx) => (
-                    <div key={cIdx} className="p-2.5 rounded-lg bg-neutral-50 border border-neutral-200 text-xs space-y-0.5">
-                      <div className="flex justify-between items-start">
-                        <div>
-                          <span className="font-bold text-neutral-900">{cert.name}</span>
-                          <span className="text-neutral-600"> — {cert.issuer}</span>
-                        </div>
-                        <a 
-                          href={cert.credentialUrl}
-                          target="_blank" 
-                          rel="noreferrer"
-                          className="text-blue-600 hover:underline font-semibold text-[11px] inline-flex items-center gap-1"
-                        >
-                          <span>Verify</span>
-                          <ExternalLink className="w-3 h-3" />
-                        </a>
-                      </div>
-                      <p className="text-neutral-600 text-[11px]">
-                        <strong>Credential ID:</strong> {cert.credentialId} | <strong>Skills:</strong> {cert.skillsCovered.slice(0, 4).join(', ')}
-                      </p>
-                    </div>
-                  ))}
+              {/* Skills */}
+              <div className="space-y-2">
+                <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-900 border-b border-neutral-200 pb-1">
+                  Skills
+                </h4>
+                <div className="text-xs text-neutral-700 space-y-1 leading-relaxed">
+                  <p><strong>Product Strategy:</strong> Product Roadmap, Product Lifecycle Management, OKRs & Key Performance Indicators (KPIs), Requirements Gathering, Feature Prioritization</p>
+                  <p><strong>Product Execution:</strong> Product Requirements Documents (PRDs), Prototyping, Acceptance Criteria, User Research & Interviews, Stakeholder Management, Agile & Scrum</p>
+                  <p><strong>Analytics & Experimentation:</strong> SQL, Product Metrics & KPI Dashboards, Funnel Analysis, Cohort Retention, Experimentation & A/B Testing</p>
+                  <p><strong>AI & Technical:</strong> Generative AI, Prompt Engineering, LLMs & RAG, AI Agents, REST APIs, Schema Validation, Workflow Automation</p>
+                  <p><strong>Tools & Platforms:</strong> Jira, Confluence, Figma, Claude Code, Antigravity, LangChain, Postman, Python, Playwright, GitHub, n8n</p>
                 </div>
-              )}
+              </div>
 
-              {/* Core Skills & Education */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="space-y-1">
-                  <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-900 border-b border-neutral-200 pb-1">
-                    Skills & Tooling
-                  </h4>
-                  <p className="text-xs text-neutral-700 leading-relaxed">
-                    <strong>Product & Strategy:</strong> Product Discovery, Requirements (BRD/FRD/SRD), Backlog Management, Costing Architecture (ZBC/VBC/CBC), User Research, DAL 1/2/3 Approvals, Agile/Scrum<br/>
-                    <strong>AI & Automation:</strong> Antigravity, Claude, Codex, Google AI Studio, NotebookLM, RAG, n8n, Python, Playwright, SQL<br/>
-                    <strong>Tooling:</strong> Jira, Trello, Confluence, Figma, Advanced Excel, Postman, GitHub, MkDocs
-                  </p>
-                </div>
-
+              {/* Education & Certifications */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
                 <div className="space-y-1">
                   <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-900 border-b border-neutral-200 pb-1">
                     Education
                   </h4>
                   <div className="text-xs text-neutral-700 space-y-1.5">
                     <div>
-                      <strong>Master of Business Administration (MBA)</strong><br/>
-                      Devi Ahilya Vishwavidyalaya, Indore, M.P. • Aug 2024
+                      <strong>Master of Business Administration (MBA)</strong> | Devi Ahilya Vishwavidyalaya, Indore<br/>
+                      <span className="text-neutral-500 italic">Aug 2024</span>
                     </div>
                     <div>
-                      <strong>Bachelor of Technology (B.Tech)</strong><br/>
-                      Medi-Caps University, Indore, M.P. • May 2020
+                      <strong>Bachelor of Technology (B.Tech)</strong> | Medi-Caps University, Indore<br/>
+                      <span className="text-neutral-500 italic">May 2020</span>
                     </div>
+                  </div>
+                </div>
+
+                <div className="space-y-1">
+                  <h4 className="text-xs font-bold uppercase tracking-wider text-neutral-900 border-b border-neutral-200 pb-1">
+                    Certifications
+                  </h4>
+                  <div className="text-xs text-neutral-700 space-y-1">
+                    <p>• AI-First Product Management (AirTribe, Jan 2026)</p>
+                    <p>• Software Product Management (Univ. of Alberta, Sept 2023)</p>
+                    <p>• Agile with Atlassian Jira (Atlassian, Sept 2023)</p>
+                    <p>• Introduction to Agile & Scrum (IBM, Sept 2023)</p>
+                    <p>• Introduction to Scrum Master (LearnQuest, Sept 2023)</p>
+                    <p>• Become a Product Manager (Udemy, Sept 2023)</p>
                   </div>
                 </div>
               </div>
