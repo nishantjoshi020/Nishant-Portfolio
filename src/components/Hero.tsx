@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { 
   ArrowRight, 
   FileText, 
@@ -27,6 +28,8 @@ interface HeroProps {
   profile: PortfolioProfile;
   onOpenResume: () => void;
 }
+
+const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export const Hero: React.FC<HeroProps> = ({ profile, onOpenResume }) => {
   const [activeStage, setActiveStage] = useState<number>(0);
@@ -109,28 +112,53 @@ export const Hero: React.FC<HeroProps> = ({ profile, onOpenResume }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
           
           {/* Left Column: PM Positioning Statement & CTAs */}
-          <div className="lg:col-span-7 space-y-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 28 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: EASE_OUT_EXPO }}
+            className="lg:col-span-7 space-y-6"
+          >
 
             {/* Candidate Name & Hero Headline */}
             <div className="space-y-3">
-              <h2 className="text-sm font-semibold tracking-wider uppercase text-neutral-500 dark:text-neutral-400">
+              <motion.h2 
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.05, ease: EASE_OUT_EXPO }}
+                className="text-sm font-semibold tracking-wider uppercase text-neutral-500 dark:text-neutral-400"
+              >
                 {profile.name}
-              </h2>
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-50 leading-[1.15]">
+              </motion.h2>
+              <motion.h1 
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.65, delay: 0.12, ease: EASE_OUT_EXPO }}
+                className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl font-extrabold tracking-tight text-neutral-900 dark:text-neutral-50 leading-[1.15]"
+              >
                 Turning user problems, data, and business goals into{' '}
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-300">
                   simple, high-impact products.
                 </span>
-              </h1>
+              </motion.h1>
             </div>
 
             {/* Supporting Paragraph */}
-            <p className="text-base sm:text-lg text-neutral-600 dark:text-neutral-300 max-w-2xl font-normal leading-relaxed">
+            <motion.p 
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.2, ease: EASE_OUT_EXPO }}
+              className="text-base sm:text-lg text-neutral-600 dark:text-neutral-300 max-w-2xl font-normal leading-relaxed"
+            >
               I am an Associate Product Manager who works across the entire product lifecycle—uncovering root-cause user friction, structuring actionable PRDs, aligning cross-functional engineering and design squads, and validating outcomes through rigorous analytics and experimentation.
-            </p>
+            </motion.p>
 
             {/* Primary & Secondary CTAs */}
-            <div className="flex flex-wrap items-center gap-3 pt-2">
+            <motion.div 
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.28, ease: EASE_OUT_EXPO }}
+              className="flex flex-wrap items-center gap-3 pt-2"
+            >
               <a
                 href="#work"
                 id="hero-view-work-cta"
@@ -157,10 +185,15 @@ export const Hero: React.FC<HeroProps> = ({ profile, onOpenResume }) => {
                   </>
                 )}
               </button>
-            </div>
+            </motion.div>
 
             {/* Social & Contact Links */}
-            <div className="pt-2 flex items-center gap-4 text-xs font-medium text-neutral-600 dark:text-neutral-400">
+            <motion.div 
+              initial={{ opacity: 0, y: 14 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.65, delay: 0.35, ease: EASE_OUT_EXPO }}
+              className="pt-2 flex items-center gap-4 text-xs font-medium text-neutral-600 dark:text-neutral-400"
+            >
               <span className="text-neutral-400 dark:text-neutral-500">Connect:</span>
               <a 
                 href={profile.socials.linkedin} 
@@ -190,12 +223,17 @@ export const Hero: React.FC<HeroProps> = ({ profile, onOpenResume }) => {
                 <Mail className="w-4 h-4" />
                 <span>Email</span>
               </a>
-            </div>
+            </motion.div>
 
-          </div>
+          </motion.div>
 
           {/* Right Column: Abstract Interactive PM Visual Element (Problem -> Insight -> Product -> Impact) */}
-          <div className="lg:col-span-5">
+          <motion.div 
+            initial={{ opacity: 0, y: 32, scale: 0.98 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.18, ease: EASE_OUT_EXPO }}
+            className="lg:col-span-5"
+          >
             <div 
               id="hero-pm-loop-card"
               className="relative rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 p-5 sm:p-6 shadow-xl space-y-5 backdrop-blur-sm"
@@ -242,45 +280,54 @@ export const Hero: React.FC<HeroProps> = ({ profile, onOpenResume }) => {
               </div>
 
               {/* Active Stage Highlight Card */}
-              {(() => {
-                const cur = stages[activeStage];
-                const Icon = cur.icon;
-                return (
-                  <div className={`rounded-xl border p-4 sm:p-5 space-y-3 transition-all duration-300 bg-gradient-to-br ${cur.color}`}>
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <div className="p-1.5 rounded-lg bg-white/80 dark:bg-neutral-800/80 shadow-xs">
-                          <Icon className="w-4 h-4" />
+              <AnimatePresence mode="wait">
+                {(() => {
+                  const cur = stages[activeStage];
+                  const Icon = cur.icon;
+                  return (
+                    <motion.div
+                      key={cur.id}
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.25, ease: EASE_OUT_EXPO }}
+                      className={`rounded-xl border p-4 sm:p-5 space-y-3 bg-gradient-to-br ${cur.color}`}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          <div className="p-1.5 rounded-lg bg-white/80 dark:bg-neutral-800/80 shadow-xs">
+                            <Icon className="w-4 h-4" />
+                          </div>
+                          <span className="text-xs font-bold uppercase tracking-wider text-neutral-800 dark:text-neutral-200">
+                            {cur.badge}
+                          </span>
                         </div>
-                        <span className="text-xs font-bold uppercase tracking-wider text-neutral-800 dark:text-neutral-200">
-                          {cur.badge}
+                        <span className={`px-2 py-0.5 rounded-md text-[11px] font-semibold border ${cur.pillColor}`}>
+                          Step {activeStage + 1} of 4
                         </span>
                       </div>
-                      <span className={`px-2 py-0.5 rounded-md text-[11px] font-semibold border ${cur.pillColor}`}>
-                        Step {activeStage + 1} of 4
-                      </span>
-                    </div>
 
-                    <div>
-                      <h4 className="text-sm sm:text-base font-bold text-neutral-900 dark:text-neutral-100">
-                        {cur.title}
-                      </h4>
-                      <p className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 mt-1 leading-relaxed">
-                        {cur.description}
-                      </p>
-                    </div>
+                      <div>
+                        <h4 className="text-sm sm:text-base font-bold text-neutral-900 dark:text-neutral-100">
+                          {cur.title}
+                        </h4>
+                        <p className="text-xs sm:text-sm text-neutral-700 dark:text-neutral-300 mt-1 leading-relaxed">
+                          {cur.description}
+                        </p>
+                      </div>
 
-                    <div className="pt-2 border-t border-neutral-200/50 dark:border-neutral-700/50 flex items-center justify-between text-xs">
-                      <span className="font-medium text-neutral-600 dark:text-neutral-400">
-                        Artifact / Metric:
-                      </span>
-                      <span className="font-mono font-bold text-neutral-900 dark:text-neutral-100 bg-white/60 dark:bg-neutral-800/60 px-2 py-0.5 rounded">
-                        {cur.metricSnippet}
-                      </span>
-                    </div>
-                  </div>
-                );
-              })()}
+                      <div className="pt-2 border-t border-neutral-200/50 dark:border-neutral-700/50 flex items-center justify-between text-xs">
+                        <span className="font-medium text-neutral-600 dark:text-neutral-400">
+                          Artifact / Metric:
+                        </span>
+                        <span className="font-mono font-bold text-neutral-900 dark:text-neutral-100 bg-white/60 dark:bg-neutral-800/60 px-2 py-0.5 rounded">
+                          {cur.metricSnippet}
+                        </span>
+                      </div>
+                    </motion.div>
+                  );
+                })()}
+              </AnimatePresence>
 
               {/* Bottom Quick Flow Summary Bar */}
               <div className="flex items-center justify-between text-xs text-neutral-500 dark:text-neutral-400 px-1">
@@ -298,17 +345,27 @@ export const Hero: React.FC<HeroProps> = ({ profile, onOpenResume }) => {
               </div>
 
             </div>
-          </div>
+          </motion.div>
 
         </div>
 
         {/* Hero Quick Stat Metrics Strip */}
-        <div className="mt-14 pt-8 border-t border-neutral-200 dark:border-neutral-800">
+        <motion.div 
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.65, delay: 0.25, ease: EASE_OUT_EXPO }}
+          className="mt-14 pt-8 border-t border-neutral-200 dark:border-neutral-800"
+        >
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
             {profile.heroStats.map((stat, idx) => (
-              <div 
+              <motion.div 
                 key={idx}
                 id={`hero-stat-card-${idx}`}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.1 + idx * 0.08, ease: EASE_OUT_EXPO }}
                 className="p-4 rounded-xl bg-neutral-50 dark:bg-neutral-900/60 border border-neutral-200/80 dark:border-neutral-800/80 hover:border-blue-500/40 transition-colors"
               >
                 <div className="text-2xl sm:text-3xl font-extrabold text-neutral-900 dark:text-neutral-50 tracking-tight">
@@ -320,10 +377,10 @@ export const Hero: React.FC<HeroProps> = ({ profile, onOpenResume }) => {
                 <div className="text-[11px] text-neutral-500 dark:text-neutral-400 mt-1 leading-tight">
                   {stat.subtext}
                 </div>
-              </div>
+              </motion.div>
             ))}
           </div>
-        </div>
+        </motion.div>
 
       </div>
     </section>

@@ -16,6 +16,8 @@ interface WritingSectionProps {
   articles: ArticleItem[];
 }
 
+const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
 export const WritingSection: React.FC<WritingSectionProps> = ({ articles }) => {
   const [selectedArticle, setSelectedArticle] = useState<ArticleItem | null>(null);
 
@@ -25,7 +27,13 @@ export const WritingSection: React.FC<WritingSectionProps> = ({ articles }) => {
       className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12"
     >
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-neutral-200 dark:border-neutral-800 pb-6">
+      <motion.div 
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.65, ease: EASE_OUT_EXPO }}
+        className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-neutral-200 dark:border-neutral-800 pb-6"
+      >
         <div className="space-y-2 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-semibold uppercase tracking-wider border border-blue-200/60 dark:border-blue-800/60">
             <span>Product Writing</span>
@@ -41,17 +49,20 @@ export const WritingSection: React.FC<WritingSectionProps> = ({ articles }) => {
         <div className="text-xs text-neutral-400">
           <span>Curated PM perspectives & frameworks</span>
         </div>
-      </div>
+      </motion.div>
 
       {/* Articles Grid */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {articles.map((article) => (
+        {articles.map((article, idx) => (
           <motion.div
             key={article.id}
             id={`article-card-${article.id}`}
             onClick={() => setSelectedArticle(article)}
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.55, delay: idx * 0.09, ease: EASE_OUT_EXPO }}
             whileHover={{ y: -6, scale: 1.015 }}
-            transition={{ duration: 0.25, ease: 'easeOut' }}
             className="group p-6 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 hover:border-blue-500/50 dark:hover:border-blue-500/50 shadow-xs hover:shadow-xl dark:hover:shadow-neutral-950/80 cursor-pointer flex flex-col justify-between space-y-4"
           >
             <div className="space-y-3">

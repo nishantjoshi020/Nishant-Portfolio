@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { 
   FileText, 
   Download, 
@@ -24,6 +25,8 @@ interface CareerSnapshotProps {
   onClose?: () => void;
   onOpen?: () => void;
 }
+
+const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export const CareerSnapshot: React.FC<CareerSnapshotProps> = ({ 
   snapshot, 
@@ -82,7 +85,13 @@ export const CareerSnapshot: React.FC<CareerSnapshotProps> = ({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
         
         {/* Header & Quick Action */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 border-b border-neutral-200 dark:border-neutral-800 pb-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.65, ease: EASE_OUT_EXPO }}
+          className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 border-b border-neutral-200 dark:border-neutral-800 pb-6"
+        >
           <div className="space-y-1">
             <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
               Recruiter Quick View
@@ -105,13 +114,19 @@ export const CareerSnapshot: React.FC<CareerSnapshotProps> = ({
               <span>{downloaded ? 'Downloaded!' : 'Download Resume (PDF)'}</span>
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* 4-Box Summary Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 text-xs">
           
           {/* Box 1: Experience & Role */}
-          <div className="p-5 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200/90 dark:border-neutral-800 space-y-2 shadow-xs">
+          <motion.div 
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, delay: 0.05, ease: EASE_OUT_EXPO }}
+            className="p-5 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200/90 dark:border-neutral-800 space-y-2 shadow-xs"
+          >
             <div className="flex items-center gap-2 text-neutral-500 dark:text-neutral-400">
               <Briefcase className="w-4 h-4 text-blue-600 dark:text-blue-400" />
               <span className="font-bold uppercase tracking-wider text-[11px]">Current Status</span>
@@ -126,10 +141,16 @@ export const CareerSnapshot: React.FC<CareerSnapshotProps> = ({
               <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
               <span>{snapshot.availability}</span>
             </div>
-          </div>
+          </motion.div>
 
           {/* Box 2: Key Domains */}
-          <div className="p-5 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200/90 dark:border-neutral-800 space-y-2 shadow-xs">
+          <motion.div 
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, delay: 0.13, ease: EASE_OUT_EXPO }}
+            className="p-5 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200/90 dark:border-neutral-800 space-y-2 shadow-xs"
+          >
             <div className="flex items-center gap-2 text-neutral-500 dark:text-neutral-400">
               <Globe className="w-4 h-4 text-purple-600 dark:text-purple-400" />
               <span className="font-bold uppercase tracking-wider text-[11px]">Key Product Domains</span>
@@ -141,10 +162,16 @@ export const CareerSnapshot: React.FC<CareerSnapshotProps> = ({
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
 
           {/* Box 3: Top PM Specialties */}
-          <div className="p-5 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200/90 dark:border-neutral-800 space-y-2 shadow-xs">
+          <motion.div 
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, delay: 0.21, ease: EASE_OUT_EXPO }}
+            className="p-5 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200/90 dark:border-neutral-800 space-y-2 shadow-xs"
+          >
             <div className="flex items-center gap-2 text-neutral-500 dark:text-neutral-400">
               <Sparkles className="w-4 h-4 text-amber-500 dark:text-amber-400" />
               <span className="font-bold uppercase tracking-wider text-[11px]">Top Specialties</span>
@@ -157,10 +184,16 @@ export const CareerSnapshot: React.FC<CareerSnapshotProps> = ({
                 </li>
               ))}
             </ul>
-          </div>
+          </motion.div>
 
           {/* Box 4: Education & Background */}
-          <div className="p-5 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200/90 dark:border-neutral-800 space-y-2 shadow-xs">
+          <motion.div 
+            initial={{ opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.5, delay: 0.29, ease: EASE_OUT_EXPO }}
+            className="p-5 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200/90 dark:border-neutral-800 space-y-2 shadow-xs"
+          >
             <div className="flex items-center gap-2 text-neutral-500 dark:text-neutral-400">
               <GraduationCap className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
               <span className="font-bold uppercase tracking-wider text-[11px]">Education</span>
@@ -171,13 +204,19 @@ export const CareerSnapshot: React.FC<CareerSnapshotProps> = ({
                 <div className="text-neutral-600 dark:text-neutral-400 text-[11px]">{edu.institution} • {edu.year}</div>
               </div>
             ))}
-          </div>
+          </motion.div>
 
         </div>
 
         {/* Verified Certifications Showcase */}
         {certifications.length > 0 && (
-          <div className="space-y-6 pt-4 border-t border-neutral-200 dark:border-neutral-800">
+          <motion.div 
+            initial={{ opacity: 0, y: 26 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.65, ease: EASE_OUT_EXPO }}
+            className="space-y-6 pt-4 border-t border-neutral-200 dark:border-neutral-800"
+          >
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="flex items-center gap-2.5">
                 <div className="w-8 h-8 rounded-xl bg-blue-100 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-400 flex items-center justify-center">
@@ -223,9 +262,13 @@ export const CareerSnapshot: React.FC<CareerSnapshotProps> = ({
             {/* Certifications Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {filteredCertifications.map((cert, cIdx) => (
-                <div
-                  key={cIdx}
+                <motion.div
+                  key={`${cert.credentialId}-${cIdx}`}
                   id={`cert-card-${cIdx}`}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-30px" }}
+                  transition={{ duration: 0.45, delay: (cIdx % 3) * 0.08, ease: EASE_OUT_EXPO }}
                   className="p-5 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200/90 dark:border-neutral-800 hover:border-blue-500/50 hover:shadow-md transition-all flex flex-col justify-between space-y-4 shadow-xs"
                 >
                   <div className="space-y-3">
@@ -293,10 +336,10 @@ export const CareerSnapshot: React.FC<CareerSnapshotProps> = ({
                       <ExternalLink className="w-3 h-3" />
                     </a>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         )}
 
       </div>

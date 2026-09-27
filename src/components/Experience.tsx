@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { 
   Briefcase, 
   Calendar, 
@@ -21,6 +22,8 @@ interface ExperienceProps {
   experiences: ExperienceItem[];
 }
 
+const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
 export const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
   const [expandedId, setExpandedId] = useState<string | null>(experiences[0]?.id || null);
 
@@ -34,7 +37,13 @@ export const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
       className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12"
     >
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-neutral-200 dark:border-neutral-800 pb-6">
+      <motion.div 
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.65, ease: EASE_OUT_EXPO }}
+        className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-neutral-200 dark:border-neutral-800 pb-6"
+      >
         <div className="space-y-2 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-semibold uppercase tracking-wider border border-blue-200/60 dark:border-blue-800/60">
             <span>Career History & Impact</span>
@@ -52,17 +61,21 @@ export const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
           <Target className="w-4 h-4 text-blue-500" />
           <span>Framed as: <strong>Problem → Action → Outcome</strong></span>
         </div>
-      </div>
+      </motion.div>
 
       {/* Experience Timeline Cards */}
       <div className="space-y-6">
-        {experiences.map((exp) => {
+        {experiences.map((exp, idx) => {
           const isExpanded = expandedId === exp.id;
           return (
-            <div
+            <motion.div
               key={exp.id}
               id={`experience-card-${exp.id}`}
-              className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
+              initial={{ opacity: 0, y: 28 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.6, delay: idx * 0.1, ease: EASE_OUT_EXPO }}
+              className={`rounded-2xl border transition-colors duration-200 overflow-hidden ${
                 isExpanded 
                   ? 'bg-white dark:bg-neutral-900 border-neutral-300 dark:border-neutral-700 shadow-md' 
                   : 'bg-white/60 dark:bg-neutral-900/60 border-neutral-200/80 dark:border-neutral-800/80 hover:border-neutral-300 dark:hover:border-neutral-700 hover:bg-white dark:hover:bg-neutral-900'
@@ -158,7 +171,12 @@ export const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
 
               {/* Detailed Expanded Breakdown (Problem -> Action -> Outcome + Key Deliverables) */}
               {isExpanded && (
-                <div className="px-5 sm:px-6 pb-6 pt-2 border-t border-neutral-100 dark:border-neutral-800 space-y-6">
+                <motion.div 
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, ease: EASE_OUT_EXPO }}
+                  className="px-5 sm:px-6 pb-6 pt-2 border-t border-neutral-100 dark:border-neutral-800 space-y-6"
+                >
                   
                   {/* Problem -> Action -> Outcome Structured Grid */}
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4 pt-2">
@@ -253,9 +271,9 @@ export const Experience: React.FC<ExperienceProps> = ({ experiences }) => {
 
                   </div>
 
-                </div>
+                </motion.div>
               )}
-            </div>
+            </motion.div>
           );
         })}
       </div>

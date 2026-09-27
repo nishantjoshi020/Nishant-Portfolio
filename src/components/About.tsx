@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { 
   Compass, 
   Users2, 
@@ -21,6 +22,8 @@ import { PortfolioProfile } from '../types/portfolio';
 interface AboutProps {
   profile: PortfolioProfile;
 }
+
+const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export const About: React.FC<AboutProps> = ({ profile }) => {
   const [selectedStep, setSelectedStep] = useState<number>(0);
@@ -60,7 +63,13 @@ export const About: React.FC<AboutProps> = ({ profile }) => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16">
         
         {/* Section Header */}
-        <div className="max-w-3xl space-y-3">
+        <motion.div 
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.65, ease: EASE_OUT_EXPO }}
+          className="max-w-3xl space-y-3"
+        >
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-200/60 dark:bg-neutral-800/60 text-neutral-700 dark:text-neutral-300 text-xs font-semibold uppercase tracking-wider">
             <span>About Me</span>
           </div>
@@ -70,13 +79,19 @@ export const About: React.FC<AboutProps> = ({ profile }) => {
           <p className="text-base sm:text-lg text-neutral-600 dark:text-neutral-300 leading-relaxed">
             I don't treat product management as just writing tickets or managing timelines. I view it as being the chief advocate for the customer's unaddressed pain and the orchestrator of measurable business impact.
           </p>
-        </div>
+        </motion.div>
 
         {/* Narrative & Core Pillars */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           
           {/* Left Narrative Box */}
-          <div className="lg:col-span-6 space-y-6">
+          <motion.div 
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.7, delay: 0.08, ease: EASE_OUT_EXPO }}
+            className="lg:col-span-6 space-y-6"
+          >
             <div className="prose dark:prose-invert text-neutral-600 dark:text-neutral-300 text-sm sm:text-base leading-relaxed space-y-4">
               <p>
                 My path into product management started with a simple fascination: <span className="font-semibold text-neutral-900 dark:text-neutral-100">why do well-engineered software tools still fail to engage users?</span>
@@ -192,16 +207,20 @@ export const About: React.FC<AboutProps> = ({ profile }) => {
               </div>
             )}
 
-          </div>
+          </motion.div>
 
           {/* Right 4 Pillar Cards */}
           <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-4">
             {pillars.map((pillar, idx) => {
               const Icon = pillar.icon;
               return (
-                <div
+                <motion.div
                   key={idx}
                   id={`about-pillar-${idx}`}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-40px" }}
+                  transition={{ duration: 0.55, delay: 0.12 + idx * 0.08, ease: EASE_OUT_EXPO }}
                   className="p-5 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-xs hover:border-blue-500/50 hover:shadow-md transition-all space-y-2.5"
                 >
                   <div className="w-9 h-9 rounded-xl bg-blue-50 dark:bg-blue-950/60 text-blue-600 dark:text-blue-400 flex items-center justify-center">
@@ -213,7 +232,7 @@ export const About: React.FC<AboutProps> = ({ profile }) => {
                   <p className="text-xs text-neutral-600 dark:text-neutral-400 leading-relaxed">
                     {pillar.description}
                   </p>
-                </div>
+                </motion.div>
               );
             })}
           </div>
@@ -221,7 +240,13 @@ export const About: React.FC<AboutProps> = ({ profile }) => {
         </div>
 
         {/* Compact "How I Work" Framework */}
-        <div className="space-y-6 pt-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.65, ease: EASE_OUT_EXPO }}
+          className="space-y-6 pt-6"
+        >
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 border-b border-neutral-200 dark:border-neutral-800 pb-4">
             <div>
               <span className="text-xs font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
@@ -269,74 +294,81 @@ export const About: React.FC<AboutProps> = ({ profile }) => {
           </div>
 
           {/* Detailed Selected Step Card */}
-          {(() => {
-            const cur = profile.howIWorkSteps[selectedStep];
-            return (
-              <div 
-                id="how-i-work-detail-panel"
-                className="p-6 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm space-y-4"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-neutral-100 dark:border-neutral-800 pb-3">
-                  <div className="flex items-center gap-3">
-                    <span className="w-8 h-8 rounded-lg bg-blue-600 text-white font-mono font-bold text-xs flex items-center justify-center">
-                      {cur.step}
+          <AnimatePresence mode="wait">
+            {(() => {
+              const cur = profile.howIWorkSteps[selectedStep];
+              return (
+                <motion.div 
+                  key={cur.step}
+                  id="how-i-work-detail-panel"
+                  initial={{ opacity: 0, y: 8 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -8 }}
+                  transition={{ duration: 0.25, ease: EASE_OUT_EXPO }}
+                  className="p-6 rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800 shadow-sm space-y-4"
+                >
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-neutral-100 dark:border-neutral-800 pb-3">
+                    <div className="flex items-center gap-3">
+                      <span className="w-8 h-8 rounded-lg bg-blue-600 text-white font-mono font-bold text-xs flex items-center justify-center">
+                        {cur.step}
+                      </span>
+                      <div>
+                        <h4 className="text-base sm:text-lg font-bold text-neutral-900 dark:text-neutral-100">
+                          {cur.title}: <span className="font-normal text-neutral-600 dark:text-neutral-300">{cur.tagline}</span>
+                        </h4>
+                      </div>
+                    </div>
+                    <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-2.5 py-1 rounded-md border border-blue-200/60 dark:border-blue-800/60 self-start sm:self-auto">
+                      Phase {selectedStep + 1} of 6
                     </span>
-                    <div>
-                      <h4 className="text-base sm:text-lg font-bold text-neutral-900 dark:text-neutral-100">
-                        {cur.title}: <span className="font-normal text-neutral-600 dark:text-neutral-300">{cur.tagline}</span>
-                      </h4>
+                  </div>
+
+                  <div className="grid grid-cols-1 md:grid-cols-12 gap-6 pt-2">
+                    <div className="md:col-span-6 space-y-2">
+                      <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
+                        Core Mindset & Goal
+                      </span>
+                      <p className="text-sm text-neutral-700 dark:text-neutral-200 leading-relaxed font-medium">
+                        "{cur.mindset}"
+                      </p>
+                    </div>
+
+                    <div className="md:col-span-3 space-y-2">
+                      <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
+                        Key Deliverables
+                      </span>
+                      <ul className="space-y-1 text-xs text-neutral-600 dark:text-neutral-300">
+                        {cur.deliverables.map((item, i) => (
+                          <li key={i} className="flex items-center gap-1.5">
+                            <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
+                            <span>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div className="md:col-span-3 space-y-2">
+                      <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
+                        Primary Collaborators
+                      </span>
+                      <div className="flex flex-wrap gap-1.5">
+                        {cur.collaborators.map((c, i) => (
+                          <span 
+                            key={i} 
+                            className="px-2 py-0.5 rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-[11px] font-medium"
+                          >
+                            {c}
+                          </span>
+                        ))}
+                      </div>
                     </div>
                   </div>
-                  <span className="text-xs font-semibold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/60 px-2.5 py-1 rounded-md border border-blue-200/60 dark:border-blue-800/60 self-start sm:self-auto">
-                    Phase {selectedStep + 1} of 6
-                  </span>
-                </div>
+                </motion.div>
+              );
+            })()}
+          </AnimatePresence>
 
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-6 pt-2">
-                  <div className="md:col-span-6 space-y-2">
-                    <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
-                      Core Mindset & Goal
-                    </span>
-                    <p className="text-sm text-neutral-700 dark:text-neutral-200 leading-relaxed font-medium">
-                      "{cur.mindset}"
-                    </p>
-                  </div>
-
-                  <div className="md:col-span-3 space-y-2">
-                    <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
-                      Key Deliverables
-                    </span>
-                    <ul className="space-y-1 text-xs text-neutral-600 dark:text-neutral-300">
-                      {cur.deliverables.map((item, i) => (
-                        <li key={i} className="flex items-center gap-1.5">
-                          <div className="w-1.5 h-1.5 rounded-full bg-blue-500" />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div className="md:col-span-3 space-y-2">
-                    <span className="text-xs font-bold uppercase tracking-wider text-neutral-400 dark:text-neutral-500">
-                      Primary Collaborators
-                    </span>
-                    <div className="flex flex-wrap gap-1.5">
-                      {cur.collaborators.map((c, i) => (
-                        <span 
-                          key={i} 
-                          className="px-2 py-0.5 rounded-md bg-neutral-100 dark:bg-neutral-800 text-neutral-700 dark:text-neutral-300 text-[11px] font-medium"
-                        >
-                          {c}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })()}
-
-        </div>
+        </motion.div>
 
       </div>
     </section>

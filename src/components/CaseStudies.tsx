@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'motion/react';
 import { 
   ArrowRight, 
   TrendingUp, 
@@ -16,6 +17,8 @@ import { CaseStudyDetailModal } from './CaseStudyDetailModal';
 interface CaseStudiesProps {
   caseStudies: CaseStudy[];
 }
+
+const EASE_OUT_EXPO: [number, number, number, number] = [0.16, 1, 0.3, 1];
 
 export const CaseStudies: React.FC<CaseStudiesProps> = ({ caseStudies }) => {
   const [selectedCase, setSelectedCase] = useState<CaseStudy | null>(null);
@@ -76,7 +79,13 @@ export const CaseStudies: React.FC<CaseStudiesProps> = ({ caseStudies }) => {
       className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12"
     >
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-neutral-200 dark:border-neutral-800 pb-6">
+      <motion.div 
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-60px" }}
+        transition={{ duration: 0.65, ease: EASE_OUT_EXPO }}
+        className="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-neutral-200 dark:border-neutral-800 pb-6"
+      >
         <div className="space-y-2 max-w-2xl">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-950/60 text-blue-700 dark:text-blue-300 text-xs font-semibold uppercase tracking-wider border border-blue-200/60 dark:border-blue-800/60">
             <Sparkles className="w-3.5 h-3.5 text-blue-600 dark:text-blue-400" />
@@ -107,15 +116,20 @@ export const CaseStudies: React.FC<CaseStudiesProps> = ({ caseStudies }) => {
             </button>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Featured Case Studies Grid */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {filteredStudies.map((study) => (
-          <div
+        {filteredStudies.map((study, idx) => (
+          <motion.div
             key={study.id}
             id={`case-study-card-${study.id}`}
-            className="group rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200/90 dark:border-neutral-800/90 hover:border-blue-500/50 dark:hover:border-blue-500/50 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between overflow-hidden"
+            initial={{ opacity: 0, y: 28 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-40px" }}
+            transition={{ duration: 0.55, delay: (idx % 3) * 0.09, ease: EASE_OUT_EXPO }}
+            whileHover={{ y: -5 }}
+            className="group rounded-2xl bg-white dark:bg-neutral-900 border border-neutral-200/90 dark:border-neutral-800/90 hover:border-blue-500/50 dark:hover:border-blue-500/50 shadow-sm hover:shadow-xl transition-shadow duration-300 flex flex-col justify-between overflow-hidden"
           >
             {/* Top Card Header */}
             <div className="p-6 space-y-4">
@@ -234,7 +248,7 @@ export const CaseStudies: React.FC<CaseStudiesProps> = ({ caseStudies }) => {
                 </button>
               )}
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
 
